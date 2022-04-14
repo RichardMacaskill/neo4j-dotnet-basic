@@ -21,7 +21,7 @@ namespace Basic_Example
         {
                 // To learn more about the Cypher syntax, see https://neo4j.com/docs/cypher-manual/current/
                 // The Reference Card is also a good resource for keywords https://neo4j.com/docs/cypher-refcard/current/
-                /*  var query = @"
+                /*  var query = @"  
                  MERGE (p1:Person { name: $person1Name })
                  MERGE (p2:Person { name: $person2Name })
                  MERGE (p1)-[:KNOWS]->(p2)
