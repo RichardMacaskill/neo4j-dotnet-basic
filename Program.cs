@@ -10,11 +10,10 @@ namespace Basic_Example
         private bool _disposed = false;
         private readonly IDriver _driver;
 
-        DriverIntroductionExample() => Dispose(false);
-
         private DriverIntroductionExample(string uri, string user, string password)
         {
             _driver = GraphDatabase.Driver(uri, AuthTokens.Basic(user, password));
+            _driver.VerifyConnectivityAsync();
         }
 
         private async Task CreateFriendship(string person1Name, string person2Name)
@@ -68,7 +67,7 @@ namespace Basic_Example
             var session = _driver.AsyncSession(build => build.WithImpersonatedUser("sue@cas-testlab-neo4j.co.uk"));
             try
             {
-                IDictionary<string, Object> txMetadata = new Dictionary<string, object> { { "applicationId", "123" } };
+                IDictionary<string, Object> txMetadata = new Dictionary<string, object> {  { "applicationId", "123456789" },{ "CallType", "Tx Function" }};
 
                 var readResults = await session.ReadTransactionAsync(async tx =>
                     {
